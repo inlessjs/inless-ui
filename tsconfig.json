@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "outDir": "",
+      "module": "commonjs",
+      "target": "es6",
+      "jsx": "react",
+      "declaration": false,
+      "sourceMap": true,
+      "allowJs": true,
+      "noImplicitAny": true
+    }
+}
