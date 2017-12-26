@@ -1,62 +1,38 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import { ILNode } from './ILNode';
-import { UIScene } from './components/UIScene/UIScene';
-import { UINodeSimple } from './components/UINodeSimple/UINodeSimple';
 
-const renderers = {
-    'test': UINodeSimple
-};
+import { UINodeList } from './components/UINodeList';
 
-const nodes: ILNode[] = [
+const nodes = [
     {
-        id: 'test',
-        name: 'test',
-        input: [
-            {
-                id: 'firstname',
-                isConnected: false,
-                isHighlighted: true,
-                role: 'input',
-                type: 'string',
-            },
-            {
-                id: 'secondname',
-                isConnected: true,
-                isHighlighted: false,
-                role: 'input',
-                type: 'string',
-            }
-        ],
-        output: [],
-        x: 200,
-        y: 400,
+        id: 1,
+        renderer: 'test'
     },
     {
-        id: 'test2',
-        name: 'test',
-        input: [
-            {
-                id: 'value',
-                isConnected: false,
-                isHighlighted: true,
-                role: 'input',
-                type: 'string',
-            }
-        ],
-        output: [
-            {
-                id: 'result',
-                isConnected: true,
-                isHighlighted: false,
-                role: 'output',
-                type: 'string',
-            }
-        ],
-        x: 10,
-        y: 0,
+        id: 2,
+        renderer: 'test2'
+    },
+    {
+        id: 3,
+        renderer: 'test2'
     }
 ];
 
-render(<UIScene nodes={nodes} renderers={renderers} selectSocket={(socket) => console.log('selected', socket)} />, document.getElementById('app'));
-// render(<div>Bliad</div>, document.getElementById('app'));
+const renderers = {
+    test: (node: any) => {
+        return <div key={node.id}>Node renderer by Test</div>;
+    },
+    test2: (node: any) => {
+        return <div key={node.id}>And node renderer by Test2</div>;
+    },
+};
+
+const rendererRef = (node: any, renderers: any) => {
+    return renderers[node.renderer];
+};
+
+const style = {
+    nodeSet: 'global-node-set',
+};
+
+render(<UINodeList nodes={nodes} renderers={renderers} rendererRef={rendererRef} style={style} />, document.getElementById('app'));
