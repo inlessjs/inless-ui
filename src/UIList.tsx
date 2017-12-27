@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { renderList, IUIListProps as IUIListPropsDefault, IUIRenderer } from '../renderList';
+import { renderList, IUIListProps as IUIListPropsDefault, IUIRenderer } from './renderList';
 
 export interface IUIListProps extends IUIListPropsDefault {
     container?: IUIRenderer;
