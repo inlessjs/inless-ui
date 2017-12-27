@@ -9,10 +9,6 @@ class Test extends React.Component<{ node: any }> {
     }
 }
 
-const style = {
-    nodeSet: 'global-node-set',
-};
-
 const props: IUIListProps = {
     nodes: [
         {
