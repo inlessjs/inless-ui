@@ -1,38 +1,54 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 
-import { UINodeList } from './components/UINodeList';
+import { UIList, IUIListProps } from './components/UIList';
 
-const nodes = [
-    {
-        id: 1,
-        renderer: 'test'
-    },
-    {
-        id: 2,
-        renderer: 'test2'
-    },
-    {
-        id: 3,
-        renderer: 'test2'
+class Test extends React.Component<{ node: any }> {
+    render() {
+        return <div>Statefull component</div>;
     }
-];
-
-const renderers = {
-    test: (node: any) => {
-        return <div key={node.id}>Node renderer by Test</div>;
-    },
-    test2: (node: any) => {
-        return <div key={node.id}>And node renderer by Test2</div>;
-    },
-};
-
-const rendererRef = (node: any, renderers: any) => {
-    return renderers[node.renderer];
-};
+}
 
 const style = {
     nodeSet: 'global-node-set',
 };
 
-render(<UINodeList nodes={nodes} renderers={renderers} rendererRef={rendererRef} style={style} />, document.getElementById('app'));
+const props: IUIListProps = {
+    nodes: [
+        {
+            id: 1,
+            renderer: 'test'
+        },
+        {
+            // id: 2,
+            renderer: 'test3'
+        },
+        {
+            id: 3,
+            renderer: 'test23'
+        }
+    ],
+    renderers: {
+        test: (props: any) => {
+            return <div>Node renderer by Test</div>;
+        },
+        test2: (props: any) => {
+            return <div>And node renderer by Test2</div>;
+        },
+        test3: Test,
+    },
+    rendererRef: (node: any, renderers: any) => node.renderer,
+    defaultRendererRef: () => 'test',
+    keyRef: (node: any): string => 'id',
+    // container: ({ children }: any) => {
+    //     return (
+    //         <div>
+    //             <h1>This is my nodes</h1>
+    //             { children }
+    //         </div>
+    //     );
+    // },
+    className: 'bubi',
+};
+
+render(<UIList {...props} />, document.getElementById('app'));
