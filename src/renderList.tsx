@@ -15,7 +15,7 @@ export interface IUIListProps {
     keyRef: string | ((node: any, nodes: any[]) => string);
 }
 
-interface IUIRenderersMap {
+export interface IUIRenderersMap {
     [key: string]: IUIRenderer;
 }
 
