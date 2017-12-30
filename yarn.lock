@@ -3,10 +3,9 @@
 
 
 "@inless/tools@https://github.com/inlessjs/inless-tools":
-  version "0.0.2"
-  resolved "https://github.com/inlessjs/inless-tools#01f81499047737067ac47cd64ee4c84248f4b373"
+  version "0.0.4"
+  resolved "https://github.com/inlessjs/inless-tools#5a41608c41f3be5495919113a54aa0edcb6b9386"
   dependencies:
-    del "^3.0.0"
     fs-extra "^5.0.0"
 
 "@types/node@*":
